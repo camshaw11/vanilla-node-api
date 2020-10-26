@@ -1,0 +1,24 @@
+{
+  "name": "vanilla-node-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camshaw11/vanilla-node-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camshaw11/vanilla-node-api/issues"
+  },
+  "homepage": "https://github.com/camshaw11/vanilla-node-api#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
