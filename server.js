@@ -1,13 +1,23 @@
 // express uses this under the hood
 const http = require('http')
-const products = require('./data/products.json')
+const { getProducts, getProduct } = require('./controllers/productController')
 
 // kickstarts everything
 const server = http.createServer((req, res) => {
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'text/html')
-    res.write('<h1>hello world</h1>')
-    res.end()
+    if(req.url === '/api/products' && req.method === 'GET') {
+        getProducts(req,res)
+    } else if (req.url.match(/\/api\/products\/([0-9]+)/) && req.method === 'GET') {
+
+        const id = req.url.split('/')[3]
+        getProduct(req, res, id)
+    } else {
+        res.writeHead(404, {'Content-Type': 'application/json'})
+        res.end(JSON.stringify({message: 'Route not found'}))
+    }
+    // res.statusCode = 200
+    // res.setHeader('Content-Type', 'text/html')
+    // res.write('<h1>hello world</h1>')
+    // res.end()
 })
 
 const PORT = process.env.PORT || 5000
