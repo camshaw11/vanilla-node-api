@@ -20,11 +20,13 @@ function create(product) {
     return new Promise((resolve, reject) => {
         const newProduct = {id: uuidv4(), ...product}
         products.push(newProduct)
-        writeDataToFile('./data/products.json')
+        writeDataToFile('./data/products.json', products)
+        resolve(newProduct)
     })
 }
 
 module.exports = {
     findAll,
-    findById
+    findById,
+    create
 }
